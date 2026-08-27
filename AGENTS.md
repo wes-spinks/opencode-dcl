@@ -155,7 +155,7 @@ The following environment variables are set globally and available in all sessio
 
 - **`JIRA_TEAM_EMAIL`** — Email for Jira API access used by workflow-validation repos (distinct from the MCP-based Jira access above, which is for interactive use).
 - **`JIRA_TEAM_PAT`** — Personal access token for Jira API access used by workflow-validation repos.
-- **`JENKINS_TOKEN`** — Token for accessing Jenkins at `jenkins-csb-rhods-opendatascience.dno.corp.redhat.com`.
+- **`JENKINS_TOKEN`** — Token for accessing the internal Jenkins instance (URL available via VPN/SSO).
 
 These are used by the workflow-validation tooling (director, RCA agent, insights) for programmatic Jira and Jenkins access. When scripts or configs in those repos reference Jira credentials or Jenkins tokens, use these env vars — do not hardcode values or prompt the user.
 
@@ -164,7 +164,7 @@ These are used by the workflow-validation tooling (director, RCA agent, insights
 ## Python & LLM SDK Conventions
 
 - When running Python scripts, always use `uv run` (not `python3` or `pip`). For one-off scripts with dependencies, use `uv run --with <package>`. For installed tools, use `uvx`.
-- When making Anthropic API calls from Python, use the Anthropic SDK with Vertex AI backend (`from anthropic import AnthropicVertex`). The credentials are already configured via `GOOGLE_APPLICATION_CREDENTIALS` and `GOOGLE_CLOUD_PROJECT` environment variables.
+- When making LLM API calls from Python, use the SDK that matches the configured provider. Check the `opencode.jsonc` provider block to determine which SDK to use (e.g., `openai` for OpenAI, `anthropic` with `AnthropicVertex` for Google Vertex AI).
 
 ## General Learnings
 
