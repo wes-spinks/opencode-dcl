@@ -172,7 +172,7 @@ All commands are mirrored in `~/.claude/commands/` for Claude Code. The followin
 
 The following rules apply to every OpenCode session:
 
-- **Identity**: user is David, English, Jira: dcohnlif@redhat.com, team project AIPCC, bug project RHOAIENG
+- **Identity**: user is Wesley Spinks, Jira: wspinks@redhat.com, team project AIPCC, bug project RHOAIENG
 - **Correctness over cost**: never take shortcuts; prefer thorough approaches
 - **When in doubt, ask**: clarify intent before guessing
 - **Google Workspace**: always use MCP tools, never WebFetch; inform user if MCP unavailable
