@@ -70,7 +70,7 @@
   "mcp": {
     "rhoai-docs": {
       "type": "local",
-      "command": ["bash", "-c", "cd /home/dcohnlif/GIT/rhoai-documentation-hub && uv run cli.py serve"],
+      "command": ["bash", "-c", "cd ~/GIT/rhoai-documentation-hub && uv run cli.py serve"],
       "enabled": true
     },
     "atlassian": {
