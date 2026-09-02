@@ -119,6 +119,7 @@ If the current project has its own `AGENTS.md` (or `CLAUDE.md`), its rules take 
 | `/jira-story` | Create an AIPCC story assigned to the next sprint |
 | `/kvetch` | Fun code review by Rivka the Yiddishe Mame |
 | `/explain` | Explain a file/function/module with dependency diagram |
+| `/new-project` | Create a new project memory file for single-repo or multi-repo work |
 
 When the user asks to build something and doesn't specify a workflow, suggest the appropriate command based on task complexity.
 
