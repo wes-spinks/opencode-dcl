@@ -26,13 +26,13 @@ curl -fsSL https://opencode.ai/install | bash
 ### 2. Clone this repo into the OpenCode config directory
 
 ```bash
-git clone git@github.com:dcohnlif/opencode_config.git ~/.config/opencode
+git clone git@github.com:wes-spinks/opencode-dcl.git ~/.config/opencode
 ```
 
 If SSH isn't configured, use HTTPS:
 
 ```bash
-git clone https://github.com/dcohnlif/opencode_config.git ~/.config/opencode
+git clone https://github.com/wes-spinks/opencode-dcl.git ~/.config/opencode
 ```
 
 ### 3. Create your config from the template
@@ -43,10 +43,12 @@ cp ~/.config/opencode/opencode.jsonc.example ~/.config/opencode/opencode.jsonc
 
 Edit `opencode.jsonc` and fill in your secrets:
 
+- **Choose your AI provider** -- the example config includes both OpenAI and Google Vertex AI (Claude). Uncomment the provider block you want and comment out the other. Set the `model` field and agent models to match.
+  - **OpenAI**: Set `OPENAI_API_KEY` in your environment
+  - **Google Vertex AI**: Run `gcloud auth application-default login` and update the project/location
 - `JIRA_USERNAME` -- your Jira email
 - `JIRA_API_TOKEN` -- your Jira API token ([generate one here](https://id.atlassian.com/manage-profile/security/api-tokens))
 - `GITHUB_PERSONAL_ACCESS_TOKEN` -- your GitHub token (`gh auth token`)
-- Update the `google-vertex-anthropic` project/location if your GCP setup differs
 
 ### 4. Install dependencies
 
@@ -170,7 +172,7 @@ All commands are mirrored in `~/.claude/commands/` for Claude Code. The followin
 
 The following rules apply to every OpenCode session:
 
-- **Identity**: user is David, English, Jira: dcohnlif@redhat.com, team project AIPCC, bug project RHOAIENG
+- **Identity**: user is Wesley Spinks, Jira: wspinks@redhat.com, team project AIPCC, bug project RHOAIENG
 - **Correctness over cost**: never take shortcuts; prefer thorough approaches
 - **When in doubt, ask**: clarify intent before guessing
 - **Google Workspace**: always use MCP tools, never WebFetch; inform user if MCP unavailable

@@ -17,7 +17,7 @@ $ARGUMENTS
 ```
 
 This path should point to a directory like:
-`/home/dcohnlif/GIT/workflow-validation-director/artifacts_journeys/<date>/<workflow-name>`
+`~/GIT/workflow-validation-director/artifacts_journeys/<date>/<workflow-name>`
 
 containing `results.txt`, `report.md`, `log.md`, `actions.md`, and optionally screenshots (`.png`).
 
@@ -27,8 +27,8 @@ containing `results.txt`, `report.md`, `log.md`, `actions.md`, and optionally sc
 - **Issue Type**: Bug
 - **Default Priority**: Medium
 - **Reporter**: Workflow Validation (workflow-validation@redhat.com) -- set via post-creation update
-- **Director .env**: /home/dcohnlif/GIT/workflow-validation-director/.env
-- **Journey specs**: /home/dcohnlif/GIT/workflow-insights/data/journeys/
+- **Director .env**: ~/GIT/workflow-validation-director/.env
+- **Journey specs**: ~/GIT/workflow-insights/data/journeys/
 
 ## ABSOLUTE RULES
 
@@ -50,7 +50,7 @@ containing `results.txt`, `report.md`, `log.md`, `actions.md`, and optionally sc
 
 2. Derive the workflow/journey name from the directory name (last path component).
 
-3. Read the journey spec from `/home/dcohnlif/GIT/workflow-insights/data/journeys/<workflow-name>/spec.md`.
+3. Read the journey spec from `~/GIT/workflow-insights/data/journeys/<workflow-name>/spec.md`.
 
 4. Identify:
    - Which task(s) failed
@@ -65,7 +65,7 @@ containing `results.txt`, `report.md`, `log.md`, `actions.md`, and optionally sc
 
 Before proceeding with full analysis, check whether this failure has been seen before.
 
-1. **Read history file**: Read `.file-bug/history.json` from the workspace root (typically `/home/dcohnlif/GIT/workflow-validation-director/.file-bug/history.json`). If the file doesn't exist, skip this phase and proceed to Phase 2.
+1. **Read history file**: Read `.file-bug/history.json` from the workspace root (typically `~/GIT/workflow-validation-director/.file-bug/history.json`). If the file doesn't exist, skip this phase and proceed to Phase 2.
 
 2. **Extract failure signature**: From the artifacts read in Phase 1, build a failure signature:
    - Journey/workflow name
@@ -94,7 +94,7 @@ Before proceeding with full analysis, check whether this failure has been seen b
 
 This is the most important phase. Do NOT skip it.
 
-1. Read `/home/dcohnlif/GIT/workflow-validation-director/.env` to get `TEST_DASHBOARD_URL`, `ADMIN_USER`, `ADMIN_PASSWORD`, and cluster API URL (derive from the dashboard URL: replace `rh-ai.apps.` with `api.` and append `:6443`).
+1. Read `~/GIT/workflow-validation-director/.env` to get `TEST_DASHBOARD_URL`, `ADMIN_USER`, `ADMIN_PASSWORD`, and cluster API URL (derive from the dashboard URL: replace `rh-ai.apps.` with `api.` and append `:6443`).
 
 2. Log into the cluster:
    ```
@@ -135,7 +135,7 @@ This is the most important phase. Do NOT skip it.
       Only proceed if the user explicitly asks to file it anyway.
 
 6. **For documentation/UI mismatch bugs -- Version-Matched Doc Verification**: If the failure report indicates a mismatch between the product UI and the documentation:
-   a. Read `RHOAI_VERSION` from the `.env` file at `/home/dcohnlif/GIT/workflow-validation-director/.env`. This is the version that was being tested.
+   a. Read `RHOAI_VERSION` from the `.env` file at `~/GIT/workflow-validation-director/.env`. This is the version that was being tested.
    b. Use `rhoai-docs_list_doc_versions` to find available doc versions.
    c. Use the doc version that matches the `RHOAI_VERSION` from the `.env` file (e.g., if `RHOAI_VERSION=2.19`, use version `2.19`). If an exact match is not available, use the closest lower version.
    d. Use `rhoai-docs_search_documentation` with the matching version to find what the docs say about the feature.
@@ -202,7 +202,7 @@ If no matching tracer report was found in the artifacts, run the script directly
 
 1. Run the tracer script (takes ~2 minutes):
    ```bash
-   bash /home/dcohnlif/GIT/rhoai-customer-workflows/scripts/cluster-management/rhoai-image-tracer.sh /tmp/rhoai-image-trace-filebug.md
+   bash ~/GIT/rhoai-customer-workflows/scripts/cluster-management/rhoai-image-tracer.sh /tmp/rhoai-image-trace-filebug.md
    ```
 
 2. If the script succeeds (exit code 0): parse the generated report at `/tmp/rhoai-image-trace-filebug.md` using the same extraction steps as Tier 1 step 4. Record this path for attachment in Phase 11.
@@ -300,7 +300,7 @@ Assess the scope of the bug beyond the specific failure that was observed. This 
 1. **Identify the affected component/feature**: From the root cause identified in Phase 2, determine the specific UI component, API endpoint, operator controller, or configuration path that is broken.
 
 2. **Trace impact**: Use the `Task` tool to launch an `explore` subagent with the following prompt:
-   - Search the workflow-validation-director journeys (at `/home/dcohnlif/GIT/workflow-insights/data/journeys/`) for other workflows that interact with the same component/feature.
+   - Search the workflow-validation-director journeys (at `~/GIT/workflow-insights/data/journeys/`) for other workflows that interact with the same component/feature.
    - Search the RHOAI documentation (using `rhoai-docs_search_documentation`) for other documented procedures that reference the same feature.
    - Return: a list of other journeys/features that might be affected by the same bug, and why.
 
@@ -549,7 +549,7 @@ If no bug was filed (user chose to skip, or it wasn't a real bug), explain why.
 
 ### Record to Bug History
 
-After filing (or commenting on an existing bug), update the history file at `.file-bug/history.json` in the workspace root (typically `/home/dcohnlif/GIT/workflow-validation-director/.file-bug/history.json`). Create the file and directory if they don't exist.
+After filing (or commenting on an existing bug), update the history file at `.file-bug/history.json` in the workspace root (typically `~/GIT/workflow-validation-director/.file-bug/history.json`). Create the file and directory if they don't exist.
 
 Append an entry with this structure:
 ```json

@@ -11,7 +11,7 @@ This command creates a Story in the AIPCC project based on the user's descriptio
 - **Project**: AIPCC
 - **Board ID**: 3723
 - **Issue Type**: Story
-- **Default Assignee**: dcohnlif@redhat.com (David Cohn Lifshitz)
+- **Default Assignee**: wspinks@redhat.com (Wesley Spinks)
 - **Default Priority**: Medium
 - **Sprint Field**: customfield_10020
 - **Team Field**: customfield_10001
@@ -25,7 +25,7 @@ $ARGUMENTS
 
 ## Instructions
 
-1. **Parse the Request**: Read the user's input. The input describes what they want to do. If they mention an assignee (e.g., "assign to jsmith"), use that person instead of the default. Otherwise, assign to `dcohnlif@redhat.com`.
+1. **Parse the Request**: Read the user's input. The input describes what they want to do. If they mention an assignee (e.g., "assign to jsmith"), use that person instead of the default. Otherwise, assign to `wspinks@redhat.com`.
 
 2. **Craft the Summary**: Write a clear, concise summary (one line, max ~80 chars) that captures the essence of the request. Use imperative mood (e.g., "Add pagination to dashboard API", "Fix race condition in auth middleware").
 
@@ -41,7 +41,7 @@ $ARGUMENTS
    - `project_key`: `AIPCC`
    - `summary`: The crafted summary
    - `issue_type`: `Story`
-   - `assignee`: The assignee email (default: `dcohnlif@redhat.com`)
+   - `assignee`: The assignee email (default: `wspinks@redhat.com`)
    - `description`: The crafted description
    - `additional_fields`: `{"priority": {"name": "Medium"}, "customfield_10020": {"id": <sprint_id>}, "customfield_10001": {"id": "702f36f3-00b7-4faf-b734-ea1b6fb6d097"}}`
 
